@@ -71,6 +71,7 @@ public class delete extends HttpServlet {
             ps.setString(1, getpostid);
 
             int count = ps.executeUpdate();
+            
 
         } catch (Exception e) {
             //サーブレット内での例外をアプリケーションのエラーとして表示

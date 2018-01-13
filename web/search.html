@@ -6,24 +6,36 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>主キーによる検索</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css">
+
     </head>
     <body>
-        <div>主キーによる検索</div>
-        
-        <form action="search" method="post">
-            <!--getも場合はURLに文字列が表示される-->
+        <a href="index.html"><h1 class="top">出会いMerarli　ああさああ</h1></a>
+        <div class="div-main">
+            <div class="div-in">
+                <div class="post">
 
-            <div>
-                <p>投稿idを入力してね</p>
-                <input type="text" name="postid" value="">
-            </div>
+                    <form action="search" method="post">
+                        <!--getも場合はURLに文字列が表示される-->
 
-            <div>
-                <input type="submit" name="btn1" value="送信">
+                        
+                            <p class="text">投稿idを入力してね
+                            <input type="text" name="postid" value="">
+                            </p>
+
+                        <div>
+                            <input class="square_btn" type="submit" name="btn1" value="送信">
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+            <div class="div-in-35">
+                広告
+            </div>
+        </div>
+
     </body>
 </html>

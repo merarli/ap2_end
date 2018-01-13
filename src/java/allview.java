@@ -83,7 +83,11 @@ public class allview extends HttpServlet {
             out.println("<p class=\"text\">ニックネーム");
             out.println("<input type=\"text\" name=\"username\" value=\"\"></p>");
             out.println("<p class=\"text\">性別");
-            out.println("<input type=\"text\" name=\"sex\" value=\"\"></p>");
+            out.println("<select name=\"sex\">");
+            out.println("<option value=\"男\">男</option>");
+            out.println("<option value=\"女\">女</option>");
+            out.println("<option value=\"それ以外\">それ以外</option>");
+            out.println("</select></p>");
             out.println("<p class=\"text\">年齢(半角数字)");
             out.println("<input type=\"text\" name=\"age\" value=\"\"></p>");
             out.println("<p>アピールポイント</p>");
