@@ -1,0 +1,114 @@
+table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+}
+table.type04 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+table.type04 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+body{
+    width: 100%;
+    font-size: 2em;
+    background-color: #e6ecf0;
+}
+
+.div-in{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div-in-35{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.post{
+    box-shadow: 0 0 8px grey;
+    margin-bottom: 20px;
+    padding-left: 10%;
+    background-color: white;
+}
+
+span.gray{
+    color: gray;
+    font-size: 0.7em;
+}
+
+/*返信用ボタン*/
+.square_btn{
+    display: inline-block;
+    padding: 0.2em 2em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    font-size: 0.5em;
+    margin-bottom: 5px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+h1.top {
+    padding-left: 15%;/*文字周りの余白*/
+    color: #000000;
+    background: #eaf3ff;/*背景色*/
+    border-bottom: solid 3px #516ab6;/*下線*/
+    width: 100%;
+    margin-top: 0%;
+    box-shadow: 0 0 8px grey;
+}
+
+
+@media screen and (min-width:0px){
+    /*0px以上で適用する内容*/
+    .div-in{
+        width: 98%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1.top {
+        font-size:1em;
+    }
+
+}
+
+@media screen and (min-width:500px){
+    /*600px以上で適用する内容*/
+    .div-in{
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1.top {
+        font-size:1.5em;
+    }
+
+    .div-main{
+        display: flex;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
