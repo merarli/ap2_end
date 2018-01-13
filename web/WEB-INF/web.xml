@@ -12,6 +12,10 @@
         <servlet-name>allview</servlet-name>
         <servlet-class>allview</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>reply</servlet-name>
+        <servlet-class>reply</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>post2</servlet-name>
         <url-pattern>/post2</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>allview</servlet-name>
         <url-pattern>/allview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reply</servlet-name>
+        <url-pattern>/reply</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

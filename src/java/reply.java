@@ -15,10 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author merarli
  */
-public class allview extends HttpServlet {
+public class reply extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +38,7 @@ public class allview extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //コネクションとステートメントの宣言
+       //コネクションとステートメントの宣言
         Connection con = null;
         Statement stmt = null;
         PreparedStatement ps = null;
@@ -53,14 +50,18 @@ public class allview extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Ex10sdfghj3</title>");
+            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview\">");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
-
+            
 //            out.println("<h3>Servlet Ex103 at " + request.getContextPath() + "</h3>");
+            
+            
+
 //            Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
@@ -69,53 +70,38 @@ public class allview extends HttpServlet {
             stmt = con.createStatement();
             request.setCharacterEncoding("UTF-8");
 
-            String sql2 = "select * from postlist";
-            ps = con.prepareStatement(sql2);
-            ResultSet rs = ps.executeQuery();
+            String getpostid = request.getParameter("getpostid");
+            String appeal = request.getParameter("appeal");
 
-            //データベースから値を取得して出力
-            while (rs.next()) {
-                out.println("<div class=\"post\">");
-                out.println("<b>" + rs.getString("username") + "</b>");
-                out.println("<span class=\"gray\">投稿ID:" + rs.getInt("postid"));
-                out.println(rs.getString("date") + "<br></span>");
-                out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
-                out.println("年齢:" + rs.getInt("age") + "</span><br>");
-                out.println(rs.getString("appeal") + "<br>");
+            //レコードの追加
+            String sql1 = "INSERT INTO replylist VALUES(DEFAULT,?,?,?)";
+            ps = con.prepareStatement(sql1);
 
-                out.println("<form action=\"reply\" method=\"post\">");
-                out.println("<input type=\"text\" name=\"appeal\" value=\"\">");
-                out.println("<input type=\"hidden\" name=\"getpostid\" value=\"" + rs.getInt("postid") + "\">");
-                out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"送信\"><br>");
-//                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
-                out.println("</from>");
+            ps.setString(1, getpostid);
+            ps.setString(2, appeal);
 
-                //ひんしん用SQL
-                String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
-                ps2 = con.prepareStatement(sql3);
-                ResultSet rs2 = ps2.executeQuery();
+            //投稿の日付
+            GregorianCalendar cal = new GregorianCalendar();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd");
+            String datestr = format.format(cal.getTime());
+            java.sql.Date d3 = Date.valueOf(datestr);
 
-                while (rs2.next()) {
-                    out.println("返信:" + rs2.getString("appeal") + "<br>");
-                }
-                
-                out.println("</div>");
+            ps.setDate(3, d3);
 
-            }
+            int count = ps.executeUpdate();
 
-            //ResultSetのclose
-            rs.close();
 
             out.println("</div>");
             out.println("<div class=\"div-in-35\">");
-
+            
+            
             out.println("広告");
             out.println("</div>");
             out.println("</div>");
-
+            
             out.println("</body>");
             out.println("</html>");
-        } catch (Exception e) {
+         } catch (Exception e) {
             //サーブレット内での例外をアプリケーションのエラーとして表示
             throw new ServletException(e);
         } finally {
