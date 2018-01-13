@@ -43,6 +43,7 @@ body{
     margin-bottom: 20px;
     padding-left: 10%;
     background-color: white;
+    padding-bottom: 10px;
 }
 
 span.gray{
@@ -61,6 +62,8 @@ span.gray{
     border-radius: 3px;
     font-size: 0.5em;
     margin-bottom: 5px;
+    margin-top:-100px;
+    
 }
 .square_btn:active {/*ボタンを押したとき*/
     -ms-transform: translateY(4px);
@@ -78,6 +81,26 @@ h1.top {
     margin-top: 0%;
     box-shadow: 0 0 8px grey;
 }
+
+/*返信用のフォーム*/
+.reply {
+    width:90%;
+    height:150px;
+    font-size:0.7em;
+    margin-bottom: -30px;
+}
+
+/*返信一覧*/
+.reply-list{
+    background-color: #f5f8fa;
+    padding: 15px;
+    border-top: 2px solid #e6ecf0;
+    border-bottom: 2px solid #e6ecf0;
+    font-size: 0.8em;
+    border-radius: 0 0 5px 5px;
+    width: 90%;
+}
+
 
 
 @media screen and (min-width:0px){
@@ -111,4 +134,16 @@ h1.top {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+
+/*投稿のアピール欄*/
+.box11{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    /*border-top: solid 5px #5d627b;*/
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    width: 85%;
 }

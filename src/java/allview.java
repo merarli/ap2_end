@@ -70,12 +70,12 @@ public class allview extends HttpServlet {
             stmt = con.createStatement();
             request.setCharacterEncoding("UTF-8");
 
-            String sql2 = "select * from postlist";
+            String sql2 = "select * from postlist order by postid desc";
             ps = con.prepareStatement(sql2);
             ResultSet rs = ps.executeQuery();
-            
+
             int count = 0;
-            
+
             //データベースから値を取得して出力
             while (rs.next()) {
                 out.println("<div class=\"post\">");
@@ -85,24 +85,33 @@ public class allview extends HttpServlet {
                 out.println(rs.getString("date") + "<br></span>");
                 out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
                 out.println("年齢:" + rs.getInt("age") + "</span><br>");
-                out.println(rs.getString("appeal") + "<br>");
-                
-                //フォーム
-                out.println("<form action=\"reply\" id=\""+ postidTmp +"\"method=\"post\">");
-                out.println("<input type=\"text\" name=\"appeal\" value=\"\">");
-                out.println("<input type=\"hidden\" name=\"getpostid\" value=\"" + postidTmp + "\">");
-                out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"送信\"><br>");
-//                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
-                out.println("</form>");
+                out.println("<div class=\"box11\">"+rs.getString("appeal") + "</div>");
+
                 
                 //ひんしん用SQL
                 String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
                 ps2 = con.prepareStatement(sql3);
                 ResultSet rs2 = ps2.executeQuery();
-
+                
+                out.println("<p></p>");
+                
+                out.println("<h3>みんなの返信</h2>");
                 while (rs2.next()) {
-                    out.println("返信:" + rs2.getString("appeal") + "<br>");
+                    out.println("<div class=\"reply-list\">");
+                    out.println("<span class=\"gray\">返信ID:" + rs2.getInt("replyid"));
+                    out.println(rs2.getString("date") + "</span><br>");
+                    out.println(rs2.getString("appeal") + "<br>");
+                    out.println("</div>");
                 }
+                out.println("<p></p>");
+                //フォーム
+                out.println("<form action=\"reply\" id=\"" + postidTmp + "\"method=\"post\">");
+                out.println("<textarea class=\"reply\" type=\"text\" name=\"appeal\" value=\"\"></textarea>");
+                out.println("<p><input type=\"hidden\" name=\"getpostid\" value=\"" + postidTmp + "\"></p>");
+                out.println("<p><input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"返信する♥\"></p>");
+//                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
+                out.println("</form>");
+
                 
                 out.println("</div>");
 

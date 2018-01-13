@@ -50,9 +50,11 @@ public class post2 extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet Ex10sdfghj3</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
+            
+            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview"+"\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
+            out.println("<h1 class=\"top\">出会いMerarli</h1>");
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
             
@@ -92,37 +94,6 @@ public class post2 extends HttpServlet {
 
             int count = ps.executeUpdate();
 
-            String sql2 = "select * from postlist";
-            ps = con.prepareStatement(sql2);
-            ResultSet rs = ps.executeQuery();
-
-            //データベースから値を取得して出力
-            while (rs.next()) {
-                out.println("<div class=\"post\">");
-                out.println("<b>"+rs.getString("username")+"</b>");
-                out.println("<span class=\"gray\">投稿ID:" + rs.getInt("postid"));
-                out.println(rs.getString("date") + "<br></span>");
-                out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
-                out.println("年齢:" + rs.getInt("age") + "</span><br>");
-                out.println(rs.getString("appeal") + "<br>");
-                out.println("<a href=\"#\" class=\"square_btn\">返信する♥</a>");
-                out.println("</div>");
-            }
-
-            //ResultSetのclose
-            rs.close();
-
-
-            out.println("</div>");
-            out.println("<div class=\"div-in-35\">");
-            
-            
-            out.println("広告");
-            out.println("</div>");
-            out.println("</div>");
-            
-            out.println("</body>");
-            out.println("</html>");
          } catch (Exception e) {
             //サーブレット内での例外をアプリケーションのエラーとして表示
             throw new ServletException(e);
