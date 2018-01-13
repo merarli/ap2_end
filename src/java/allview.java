@@ -57,7 +57,7 @@ public class allview extends HttpServlet {
             out.println("<meta charset=\"UTF-8\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
+            out.println("<a href=\"index.html\" ><h1 class=\"top\">出会いMerarli　ああさああ</h1></a>");
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
 
@@ -73,6 +73,28 @@ public class allview extends HttpServlet {
             String sql2 = "select * from postlist order by postid desc";
             ps = con.prepareStatement(sql2);
             ResultSet rs = ps.executeQuery();
+            
+            //投稿フォーム
+            
+            out.println("<div class=\"post\">");
+            out.println("<h3>新規投稿</h2>");
+            out.println("<form action=\"post2\" id=\"" + "post" + "\"method=\"post\">");
+            
+            out.println("<p class=\"text\">ニックネーム");
+            out.println("<input type=\"text\" name=\"username\" value=\"\"></p>");
+            out.println("<p class=\"text\">性別");
+            out.println("<input type=\"text\" name=\"sex\" value=\"\"></p>");
+            out.println("<p class=\"text\">年齢(半角数字)");
+            out.println("<input type=\"text\" name=\"age\" value=\"\"></p>");
+            out.println("<p>アピールポイント</p>");
+            out.println("<textarea class=\"reply\" type=\"text\" name=\"appeal\" value=\"\"></textarea>");
+            out.println("<p></p>");
+            out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"投稿する♥\">");
+            
+            out.println("</form>");
+
+            out.println("</div>");
+            
 
             int count = 0;
 

@@ -58,7 +58,7 @@ public class reply extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
 
-//            Class.forNameの記述
+//          Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //データベースへの接続

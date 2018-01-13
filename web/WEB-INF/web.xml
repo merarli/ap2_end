@@ -16,6 +16,10 @@
         <servlet-name>reply</servlet-name>
         <servlet-class>reply</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>delete</servlet-name>
+        <servlet-class>delete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>post2</servlet-name>
         <url-pattern>/post2</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>reply</servlet-name>
         <url-pattern>/reply</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>delete</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

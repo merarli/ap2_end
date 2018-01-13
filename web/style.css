@@ -147,3 +147,9 @@ h1.top {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
     width: 85%;
 }
+
+/*input用text*/
+.text > input{
+    font-size: 0.7em;
+    /*height: 20px;*/
+}
