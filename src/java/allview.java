@@ -72,23 +72,26 @@ public class allview extends HttpServlet {
             String sql2 = "select * from postlist";
             ps = con.prepareStatement(sql2);
             ResultSet rs = ps.executeQuery();
-
+            
+            int count = 0;
+            
             //データベースから値を取得して出力
             while (rs.next()) {
                 out.println("<div class=\"post\">");
                 out.println("<b>" + rs.getString("username") + "</b>");
-                out.println("<span class=\"gray\">投稿ID:" + rs.getInt("postid"));
+                int postidTmp = rs.getInt("postid");
+                out.println("<span class=\"gray\">投稿ID:" + postidTmp);
                 out.println(rs.getString("date") + "<br></span>");
                 out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
                 out.println("年齢:" + rs.getInt("age") + "</span><br>");
                 out.println(rs.getString("appeal") + "<br>");
 
-                out.println("<form action=\"reply\" method=\"post\">");
+                out.println("<form action=\"reply\" id=\""+ count +"\"method=\"post\">");
                 out.println("<input type=\"text\" name=\"appeal\" value=\"\">");
-                out.println("<input type=\"hidden\" name=\"getpostid\" value=\"" + rs.getInt("postid") + "\">");
+                out.println("<input type=\"hidden\" name=\"getpostid\" value=\"" + postidTmp + "\">");
                 out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"送信\"><br>");
 //                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
-                out.println("</from>");
+                out.println("</form>");
 
                 //ひんしん用SQL
                 String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
