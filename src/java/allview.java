@@ -54,6 +54,7 @@ public class allview extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet Ex10sdfghj3</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
+            out.println("<meta charset=\"UTF-8\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
@@ -85,14 +86,15 @@ public class allview extends HttpServlet {
                 out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
                 out.println("年齢:" + rs.getInt("age") + "</span><br>");
                 out.println(rs.getString("appeal") + "<br>");
-
-                out.println("<form action=\"reply\" id=\""+ count +"\"method=\"post\">");
+                
+                //フォーム
+                out.println("<form action=\"reply\" id=\""+ postidTmp +"\"method=\"post\">");
                 out.println("<input type=\"text\" name=\"appeal\" value=\"\">");
                 out.println("<input type=\"hidden\" name=\"getpostid\" value=\"" + postidTmp + "\">");
                 out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"送信\"><br>");
 //                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
                 out.println("</form>");
-
+                
                 //ひんしん用SQL
                 String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
                 ps2 = con.prepareStatement(sql3);

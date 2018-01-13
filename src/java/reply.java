@@ -38,11 +38,13 @@ public class reply extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       //コネクションとステートメントの宣言
+        //コネクションとステートメントの宣言
         Connection con = null;
         Statement stmt = null;
         PreparedStatement ps = null;
         PreparedStatement ps2 = null;
+        request.setCharacterEncoding("UTF-8");
+        String getpostid = request.getParameter("getpostid");
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -50,17 +52,11 @@ public class reply extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Ex10sdfghj3</title>");
-            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview\">");
+            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview#" + getpostid + "\">");
+            out.println("<meta charset=\"UTF-8\">");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
-            out.println("<div class=\"div-main\">");
-            out.println("<div class=\"div-in\">");
-            
-//            out.println("<h3>Servlet Ex103 at " + request.getContextPath() + "</h3>");
-            
-            
 
 //            Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -68,9 +64,7 @@ public class reply extends HttpServlet {
             //データベースへの接続
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/deaiDB", "kadaiyou", "Kadaiyou1!");
             stmt = con.createStatement();
-            request.setCharacterEncoding("UTF-8");
 
-            String getpostid = request.getParameter("getpostid");
             String appeal = request.getParameter("appeal");
 
             //レコードの追加
@@ -90,18 +84,7 @@ public class reply extends HttpServlet {
 
             int count = ps.executeUpdate();
 
-
-            out.println("</div>");
-            out.println("<div class=\"div-in-35\">");
-            
-            
-            out.println("広告");
-            out.println("</div>");
-            out.println("</div>");
-            
-            out.println("</body>");
-            out.println("</html>");
-         } catch (Exception e) {
+        } catch (Exception e) {
             //サーブレット内での例外をアプリケーションのエラーとして表示
             throw new ServletException(e);
         } finally {
