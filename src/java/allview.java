@@ -52,16 +52,17 @@ public class allview extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ex10sdfghj3</title>");
+            out.println("<title>すべての投稿一覧</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
+            out.println("<script type=\"text/javascript\" src=\"script.js\"></script>");
             out.println("<meta charset=\"UTF-8\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<a href=\"index.html\" ><h1 class=\"top\">出会いMerarli　ああさああ</h1></a>");
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
+            
 
-//            out.println("<h3>Servlet Ex103 at " + request.getContextPath() + "</h3>");
 //            Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
@@ -77,6 +78,10 @@ public class allview extends HttpServlet {
             //投稿フォーム
             
             out.println("<div class=\"post\">");
+            
+            //ポップアップ
+
+            
             out.println("<h3>新規投稿</h2>");
             out.println("<form action=\"post2\" id=\"" + "post" + "\"method=\"post\">");
             

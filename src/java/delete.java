@@ -50,7 +50,7 @@ public class delete extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ex10sdfghj3</title>");
+            out.println("<title>検索結果</title>");
             out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview#" + "" + "\">");
             out.println("<meta charset=\"UTF-8\">");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");

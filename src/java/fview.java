@@ -46,16 +46,19 @@ public class fview extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ex10sdfghj3</title>");
+            out.println("<title>女子だけの投稿一覧</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
+            out.println("<script type=\"text/javascript\" src=\"script.js\"></script>");
             out.println("<meta charset=\"UTF-8\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<a href=\"index.html\" ><h1 class=\"top\">出会いMerarli　ああさああ</h1></a>");
+            
+
+
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
-
-//            out.println("<h3>Servlet Ex103 at " + request.getContextPath() + "</h3>");
+            
 //            Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
@@ -67,13 +70,12 @@ public class fview extends HttpServlet {
             String sql2 = "select * from postlist where sex = '女' order by postid desc";
             ps = con.prepareStatement(sql2);
             ResultSet rs = ps.executeQuery();
-            
+
             //投稿フォーム
-            
             out.println("<div class=\"post\">");
             out.println("<h3>新規投稿</h2>");
             out.println("<form action=\"post2\" id=\"" + "post" + "\"method=\"post\">");
-            
+
             out.println("<p class=\"text\">ニックネーム");
             out.println("<input type=\"text\" name=\"username\" value=\"\"></p>");
             out.println("<p class=\"text\">性別");
@@ -88,11 +90,10 @@ public class fview extends HttpServlet {
             out.println("<textarea class=\"reply\" type=\"text\" name=\"appeal\" value=\"\"></textarea>");
             out.println("<p></p>");
             out.println("<input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"投稿する♥\">");
-            
+
             out.println("</form>");
 
             out.println("</div>");
-            
 
             int count = 0;
 
@@ -105,16 +106,15 @@ public class fview extends HttpServlet {
                 out.println(rs.getString("date") + "<br></span>");
                 out.println("<span class=\"gray\">性別:" + rs.getString("sex"));
                 out.println("年齢:" + rs.getInt("age") + "</span><br>");
-                out.println("<div class=\"box11\">"+rs.getString("appeal") + "</div>");
+                out.println("<div class=\"box11\">" + rs.getString("appeal") + "</div>");
 
-                
                 //ひんしん用SQL
                 String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
                 ps2 = con.prepareStatement(sql3);
                 ResultSet rs2 = ps2.executeQuery();
-                
+
                 out.println("<p></p>");
-                
+
                 out.println("<h3>みんなの返信</h2>");
                 while (rs2.next()) {
                     out.println("<div class=\"reply-list\">");
@@ -132,7 +132,6 @@ public class fview extends HttpServlet {
 //                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
                 out.println("</form>");
 
-                
                 out.println("</div>");
 
             }

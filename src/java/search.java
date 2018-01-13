@@ -74,7 +74,7 @@ public class search extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ex10sdfghj3</title>");
+            out.println("<title>検索結果</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
 
             //エラーだった場合自動で戻る
