@@ -15,18 +15,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author merarli
  */
-@WebServlet(urlPatterns = {"/post"})
-public class post extends HttpServlet {
+public class allview extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +39,7 @@ public class post extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        //コネクションとステートメントの宣言
@@ -50,11 +52,11 @@ public class post extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ex103</title>");
+            out.println("<title>Servlet Ex10sdfghj3</title>");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1 class=\"top\">出会いMerarli　あああ</h1>");
+            out.println("<h1 class=\"top\">出会いMerarli　ああさああ</h1>");
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
             
@@ -62,7 +64,7 @@ public class post extends HttpServlet {
             
             
 
-//          Class.forNameの記述
+//            Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //データベースへの接続
@@ -70,29 +72,6 @@ public class post extends HttpServlet {
             stmt = con.createStatement();
             request.setCharacterEncoding("UTF-8");
 
-            String username = request.getParameter("username");
-            String sex = request.getParameter("sex");
-            String age = request.getParameter("age");
-            String appeal = request.getParameter("appeal");
-
-            //レコードの追加
-            String sql1 = "INSERT INTO postlist VALUES(DEFAULT,?,?,?,?,?)";
-            ps = con.prepareStatement(sql1);
-
-            ps.setString(1, username);
-            ps.setString(2, sex);
-            ps.setInt(3, Integer.parseInt(age));
-            ps.setString(4, appeal);
-
-            //投稿の日付
-            GregorianCalendar cal = new GregorianCalendar();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd");
-            String datestr = format.format(cal.getTime());
-            java.sql.Date d3 = Date.valueOf(datestr);
-
-            ps.setDate(5, d3);
-
-            int count = ps.executeUpdate();
 
             String sql2 = "select * from postlist";
             ps = con.prepareStatement(sql2);
@@ -114,6 +93,7 @@ public class post extends HttpServlet {
             //ResultSetのclose
             rs.close();
 
+
             out.println("</div>");
             out.println("<div class=\"div-in-35\">");
             
@@ -124,7 +104,7 @@ public class post extends HttpServlet {
             
             out.println("</body>");
             out.println("</html>");
-        } catch (Exception e) {
+         } catch (Exception e) {
             //サーブレット内での例外をアプリケーションのエラーとして表示
             throw new ServletException(e);
         } finally {
@@ -144,6 +124,7 @@ public class post extends HttpServlet {
                 }
             }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
