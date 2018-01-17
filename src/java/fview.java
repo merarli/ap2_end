@@ -59,7 +59,7 @@ public class fview extends HttpServlet {
             out.println("<div class=\"div-main\">");
             out.println("<div class=\"div-in\">");
             
-//            Class.forNameの記述
+            //Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //データベースへの接続
@@ -108,7 +108,7 @@ public class fview extends HttpServlet {
                 out.println("年齢:" + rs.getInt("age") + "</span><br>");
                 out.println("<div class=\"box11\">" + rs.getString("appeal") + "</div>");
 
-                //ひんしん用SQL
+                //返信SQL
                 String sql3 = "select * from replylist where getpostid = " + rs.getInt("postid");
                 ps2 = con.prepareStatement(sql3);
                 ResultSet rs2 = ps2.executeQuery();

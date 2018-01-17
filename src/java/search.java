@@ -63,6 +63,7 @@ public class search extends HttpServlet {
 
             String postid = request.getParameter("postid");
 
+            //データが存在するか確認
             String sql1 = "select * from postlist where postid =" + postid;
             ps3 = con.prepareStatement(sql1);
             ResultSet rs3 = ps3.executeQuery();

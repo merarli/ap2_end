@@ -51,20 +51,21 @@ public class delete extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>検索結果</title>");
+            //０秒後id指定で自動移動
             out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview#" + "" + "\">");
             out.println("<meta charset=\"UTF-8\">");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("</head>");
             out.println("<body>");
 
-//          Class.forNameの記述
+            //Class.forNameの記述
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //データベースへの接続
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/deaiDB", "kadaiyou", "Kadaiyou1!");
             stmt = con.createStatement();
 
-            //レコードの追加
+            //レコードの削除
             String sql1 = "DELETE FROM postlist WHERE postid = ?";
             ps = con.prepareStatement(sql1);
 

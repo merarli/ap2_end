@@ -52,7 +52,8 @@ public class reply extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Ex10sdfghj3</title>");
-            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview#" + getpostid + "\">");
+            //０秒後id指定で自動移動
+            out.println("<meta http-equiv=\"refresh\" content=\"0;URL=allview#" + getpostid + "post\">");
             out.println("<meta charset=\"UTF-8\">");
             out.println("<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("</head>");
