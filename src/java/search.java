@@ -127,7 +127,6 @@ public class search extends HttpServlet {
                 out.println("<textarea class=\"reply\" type=\"text\" name=\"appeal\" value=\"\"></textarea>");
                 out.println("<p><input type=\"hidden\" name=\"getpostid\" value=\"" + postidTmp + "\"></p>");
                 out.println("<p><input class=\"square_btn\" type=\"submit\" name=\"btn1\" value=\"返信する♥\"></p>");
-//                out.println("<a href=\"#\" class=\"square_btn\" type=\"submit\" name=\"btn1\">返信する♥</a>");
                 out.println("</form>");
 
                 out.println("<form action=\"delete\" id=\"" + "deelete" + "\"method=\"post\">");
