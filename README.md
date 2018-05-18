@@ -1,4 +1,4 @@
-#JSPとサーブレットとMySQLで匿名掲示板
+# JSPとサーブレットとMySQLで匿名掲示板
 
 DB名はdeaiDB
 
