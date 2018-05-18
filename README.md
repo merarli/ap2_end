@@ -1,5 +1,7 @@
 #JSPとサーブレットとMySQLで匿名掲示板
+
 DB名はdeaiDB
+
 以下のテーブルを作成
 
 ```sql:postlist
